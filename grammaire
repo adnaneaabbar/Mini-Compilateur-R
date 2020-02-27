@@ -1,0 +1,18 @@
+INST	::=	INST | AFFEC | SI | TANTQUE | epsilon
+AFFEC	::=	ID <-EXPR|ID=EXP
+SI   	::=	if (COND) {INST}
+TANTQUE	::=	while (COND) {INST}
+POUR	::=	for (VAR IN SEQ) {INST}
+REPEAT	::=	{INST ; if (COND) break}
+COND	::=	EXPR RELOP EXPR
+RELOP	::=	= | != | < | > | <= | >=
+ADDOP	::=	+ | -
+MULOP	::=	* | /
+EXPR	::=	TERM { ADDOP TERM }
+SEQ ::= NUM:NUM
+TERM	::=	FACT { MULOP FACT }
+FACT	::=	ID | NUM | ( EXPR )
+ID  	::=	lettre {lettre | chiffre}
+NUM 	::=	chiffre {chiffre} 
+Chiffre	::=	0|..|9
+Lettre	::=	a|b|..|z|A|..|Z
